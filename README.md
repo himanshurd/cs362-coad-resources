@@ -23,6 +23,19 @@ bundle install
 Next, set up the database:
 
 ```
+Copy the .env.example file, Create a .env file and past in the example code. Change the following lines to with your own data. Save after completing. 
+
+# Format: '{admin_name: "admin_email@domain.com"}'
+ADMINS='CHANGEME'
+
+# Test organization user account email for manual testing
+TEST_USER_EMAIL='CHANGEME'
+
+# Test organization user account password
+TEST_USER_PASSWORD='CHANGEME'
+```
+
+```
 rails db:setup
 ```
 
