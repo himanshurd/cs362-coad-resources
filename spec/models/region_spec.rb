@@ -5,6 +5,7 @@ RSpec.describe Region, type: :model do
     Region.new
   end
 
+  
   describe "attributes" do
     it "has a name" do 
       region = Region.new
