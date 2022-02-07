@@ -5,4 +5,8 @@ RSpec.describe Ticket, type: :model do
         Ticket.new
     end
 
+    
+
+
+
 end
