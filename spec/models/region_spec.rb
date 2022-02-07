@@ -2,9 +2,17 @@ require 'rails_helper'
 
 RSpec.describe Region, type: :model do
 
-  let (:region) { Region.new(name: 'Fake Region') }
-  it 'exists' do
-    Region.new
+  let (:region) { build(:region) }
+
+  it "has a name" do 
+    region = build(:region)
+    expect(region).to respond_to(:name)
+  end
+
+  it "has a string representation that is its name" do
+    my_region = region()
+    my_region.name = 'NEW NAME'
+    expect(region.to_s).to eq(region.name)
   end
 
   describe "attributes" do
@@ -28,5 +36,4 @@ RSpec.describe Region, type: :model do
       expect(region.name).to eq('Unspecified')
     end
   end
-
 end
