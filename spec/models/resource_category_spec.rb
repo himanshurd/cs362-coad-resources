@@ -26,6 +26,12 @@ RSpec.describe ResourceCategory, type: :model do
       expect(resource_category.name).to eq('unspecified')
     end
   end
+
+  describe "associations" do
+    it "it has many tickets" do
+      expect(region).to have_many(:tickets)
+    end
+  end
   
 
 
