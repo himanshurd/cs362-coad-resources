@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
+  
+  let (:resource_category) { build(:resource_category) }
+
+  it "has a name" do 
+    expect(resource_category).to respond_to(:name)
 
   let(:resource_category) {ResourceCategory.new(name: 'Fake Resource Category')}
 
@@ -37,6 +42,7 @@ RSpec.describe ResourceCategory, type: :model do
       resource_category.name = nil
       expect(resource_category).to_not be_valid
     end
+  end
 
     it "cannot have a length greater than 255" do
       expect(resource_category).to validates_length_of(resource_category.name).is_at_least(1).is_at_most(255)
