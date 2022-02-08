@@ -37,7 +37,7 @@ RSpec.describe Organization, type: :model do
         end
 
         it "has the description" do
-            execute(description).to respond_to(:description)
+            expect(description).to respond_to(:description)
         end
     end
     
