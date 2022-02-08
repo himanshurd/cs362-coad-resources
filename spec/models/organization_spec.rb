@@ -38,6 +38,7 @@ RSpec.describe Organization, type: :model do
 
         it "has the description" do
             execute(description).to respond_to(:description)
+        end
     end
     
     describe "validations" do
@@ -90,17 +91,29 @@ RSpec.describe Organization, type: :model do
         end
 
         it "check the length of name" do
-            should validate_length_of(:name).is_at_least(1).is_at_most(1020)
+            should validate_length_of(:name).is_at_most(1020)
         end
     end
 
+    describe "methods" do
+        it "approve the status" do
+            organization.approve
+            expect(organization.status).to eq('approved')
+        end
 
-       
-    
-    
+        it "reject the status" do
+            organization.reject
+            expect(organization.status).to eq('rejected')
+        end
 
+        it "set default status" do
+            organization.set_default_status
+            expect(organization.status).to eq('submitted')
+        end
 
-
-
-
+        it 'returns the name' do
+            name = resource_category.name
+            expect(resource_category.to_s).to eq(name)
+        end
+    end
 end
