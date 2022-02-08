@@ -8,9 +8,6 @@ RSpec.describe ResourceCategory, type: :model do
     expect(resource_category).to respond_to(:name)
 
   let(:resource_category) {ResourceCategory.new(name: 'Fake Resource Category')}
-  it 'exists' do
-    ResourceCategory.new
-  end
 
   describe "attributes" do
     it "has a name" do
@@ -60,4 +57,7 @@ RSpec.describe ResourceCategory, type: :model do
       expect(duplicate_resource_category).to be_invalid
     end
   end
+
+
+
 end
