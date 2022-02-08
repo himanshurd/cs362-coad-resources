@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Region, type: :model do
+  
   let (:region) { build(:region) }
   
   describe "attributes" do
@@ -9,6 +10,7 @@ RSpec.describe Region, type: :model do
       expect(Region).to respond_to(:name)
     end
   end
+
   describe "#to_s" do 
     it "returns the name" do 
       name = region.name
@@ -24,4 +26,9 @@ RSpec.describe Region, type: :model do
     end
   end
 
+  describe "validations" do 
+    it "No blank names" do 
+      expect(region).to validate_presence_of(:name)
+    end
+  end
 end
