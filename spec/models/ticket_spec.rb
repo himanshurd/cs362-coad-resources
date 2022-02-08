@@ -20,7 +20,7 @@ RSpec.describe Ticket, type: :model do
     end
 
     # test won't pass with .optional
-    it "Optionally belongs to an Organization" do 
+    it "Optionally belongs to Organization" do 
       should belong_to(:organization)
     end
   end
