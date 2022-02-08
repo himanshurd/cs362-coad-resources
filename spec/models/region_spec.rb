@@ -6,7 +6,6 @@ RSpec.describe Region, type: :model do
   
   describe "attributes" do
     it "has a name" do 
-      region = Region.new
       expect(Region).to respond_to(:name)
     end
   end
@@ -34,11 +33,15 @@ RSpec.describe Region, type: :model do
     end
 
     it "Name length 1-255" do 
-      should validate_length_of(:name).is_at_least(1).is_at_most(255)
+      should validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
     end
 
     it "Must be unique" do 
       should validate_uniqueness_of(:name).case_insensitive
+    end
+
+    it "Have many Tickets" do 
+      should have_many(:tickets)
     end
   end
 end
