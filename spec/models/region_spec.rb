@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Region, type: :model do
-  
+
   let (:region) { build(:region) }
   
   describe "attributes" do
@@ -28,7 +28,9 @@ RSpec.describe Region, type: :model do
 
   describe "validations" do 
     it "No blank names" do 
-      expect(region).to validate_presence_of(:name)
+      expect(region).to be_valid
+      region.name=nil
+      expect(region).to_not be_valid
     end
   end
 end
