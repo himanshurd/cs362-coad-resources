@@ -18,5 +18,10 @@ RSpec.describe Ticket, type: :model do
     it "Belongs to a Resource Category" do 
       should belong_to(:resource_category)
     end
+
+    # test won't pass with .optional
+    it "Optionally belongs to an Organization" do 
+      should belong_to(:organization)
+    end
   end
 end
