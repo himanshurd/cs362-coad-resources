@@ -54,7 +54,7 @@ RSpec.describe Organization, type: :model do
         it { organization.should allow_value(organization.email).for(:email) }
         it { organization.should validate_uniqueness_of(:email).case_insensitive }
         it { organization.should validate_uniqueness_of(:name).case_insensitive }
-        it { organization.should validate_length_of(:name).is_at_most(255) }
+        it { organization.should validate_length_of(:description).is_at_most(1020) }
     end
 
     describe "methods" do
