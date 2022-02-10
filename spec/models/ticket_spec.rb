@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Ticket, type: :model do
   let(:ticket) {Ticket.new(name: "Fake Tickets", phone: "111111111", description: "Here is your Fake ticket") }
   
-  describe "factory attribute tests" do
+  describe "attribute tests" do
     it "has a name" do
       expect(ticket).to respond_to(:name)
     end
