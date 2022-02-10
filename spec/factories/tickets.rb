@@ -12,6 +12,7 @@ FactoryBot.define do
     trait :organization_id do 
       organization_id {5}
     end
-
+    trait :region_id
+    region_id nil
   end
 end
