@@ -6,9 +6,12 @@ FactoryBot.define do
     closed {false}
     region
     resource_category
-
     trait :closed do
       closed { true }
     end
+    trait :organization_id do 
+      organization_id {5}
+    end
+
   end
 end
