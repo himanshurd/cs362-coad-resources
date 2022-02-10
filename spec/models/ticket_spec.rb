@@ -87,10 +87,13 @@ RSpec.describe Ticket, type: :model do
         valid_ticket = create(:ticket)
         expect(Ticket.region(1)).to include(valid_ticket)
       end
+    end
 
-      it "Ticket has no region_id" do 
-        invalid_ticket = create(:ticket, :region_id)
-        expect(Ticket.region(:region_id)).to_not include(invalid_ticket)
+    describe "Resource Category" do
+
+      it "Ticket has a valid resource_category_id" do 
+        valid_ticket = create(:ticket)
+        expect(Ticket.resource_category(1)).to include(valid_ticket)
       end
     end
   end
