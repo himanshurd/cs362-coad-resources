@@ -15,8 +15,6 @@ RSpec.describe Ticket, type: :model do
     it { should validate_presence_of(:phone) }
     it { should validate_length_of(:name).is_at_least(1).is_at_most(255) }
     it { should validate_length_of(:description).is_at_most(1020) }
-    
-    # Need validation for phone
   end
 
   describe "Scopes" do 
@@ -90,10 +88,45 @@ RSpec.describe Ticket, type: :model do
     end
 
     describe "Resource Category" do
-
       it "Ticket has a valid resource_category_id" do 
         valid_ticket = create(:ticket)
         expect(Ticket.resource_category(1)).to include(valid_ticket)
+      end
+    end
+  end
+
+  describe "Methods" do
+    describe "#open?" do 
+      it "Open if ticket is not closed" do
+        expect(ticket.closed).to eq(false)
+        expect(ticket.open?).to eq(true)
+      end
+
+      it "not open if ticket is closed" do
+        ticket= Ticket.new(closed: true)
+        expect(ticket.closed).to eq(true)
+        expect(ticket.open?).to eq(false)
+      end
+    end
+
+    describe "#captured?" do
+      it "Is captured if organization is present, " do
+        ticket.organization=Organization.new
+        expect(ticket.captured?).to eq(true)
+        expect(ticket.organization.present?).to eq(true)
+      end
+
+      it "Is not captured if organization is not present" do
+        expect(ticket.organization.present?).to eq(false)
+        expect(ticket.captured?).to eq(false)
+      end
+    end
+
+    describe "to_s" do 
+      it "Returns Ticket id number" do 
+        expect(ticket.to_s).to eq("Ticket ")
+        ticket=Ticket.new(id:1)
+        expect(ticket.to_s).to eq("Ticket 1")
       end
     end
   end

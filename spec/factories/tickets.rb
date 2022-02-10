@@ -12,5 +12,8 @@ FactoryBot.define do
     trait :organization_id do 
       organization_id {5}
     end
+    trait :resource_category_id do 
+      resource_category_id {nil}
+    end
   end
 end
