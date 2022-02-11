@@ -3,6 +3,21 @@ require 'rails_helper'
 RSpec.describe Organization, type: :model do
     let(:organization) {Organization.new(email: "test@test.com", name: "FakeOrganization", phone: "0000000000", status: "submitted", transportation: "yes", primary_name: "PrimaryFakeName", secondary_name: "SecondFakeOrganiz}ation", secondary_phone: "1111111111", description: "Fake description here")}
 
+    describe "Associations" do 
+        it "has_many" do 
+            organization.should have_many(:users)
+        end
+
+        it "has_many" do
+            organization.should have_many(:tickets)
+        end
+
+        it "have_and_belongs_to_many" do
+            organization.should have_and_belong_to_many(:resource_categories)   
+        end
+
+    end
+
     describe "attributes" do
         it "has the name" do
             expect(organization).to respond_to(:name)
