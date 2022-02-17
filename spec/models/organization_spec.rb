@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
-    let(:organization) {Organization.new(email: "test@test.com", name: "FakeOrganization", phone: "0000000000", status: "submitted", transportation: "yes", primary_name: "PrimaryFakeName", secondary_name: "SecondFakeOrganiz}ation", secondary_phone: "1111111111", description: "Fake description here")}
+    let(:organization) { build(:organization)}
 
     describe "Associations" do 
         it "has_many" do 
