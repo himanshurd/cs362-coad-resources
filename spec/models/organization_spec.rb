@@ -85,7 +85,7 @@ RSpec.describe Organization, type: :model do
 
         it "set default status" do
             organization.set_default_status
-            expect(organization.status).to eq('submitted')
+            expect(organization.status).to eq(organization.set_default_status)
         end
 
         it 'returns the name' do
