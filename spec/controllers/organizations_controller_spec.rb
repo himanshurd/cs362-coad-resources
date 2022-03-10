@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe OrganizationsController, type: :controller do
-  describe "Non logged in User" do 
-    it "redirects into sign in screen" do
+  describe "Non Logged in User" do 
+    it "Redirects Back to Sign-In Screen" do
       get :index
       expect(response).to redirect_to(new_user_session_path)
       post :create
@@ -21,6 +21,23 @@ RSpec.describe OrganizationsController, type: :controller do
       expect(response).to redirect_to(new_user_session_path)
       post :reject, params: {id: 'Fake'}
       expect(response).to redirect_to(new_user_session_path)
+    end
+  end
+  
+  describe "Approved Organization User" do 
+    it "Redirects Back to Dashboard" do
+      organization_user = create(:user)
+      organization_user.confirm
+      sign_in(organization_user)
+      
+      get :new 
+      expect(response).to redirect_to(dashboard_path)
+      post :create
+      expect(response).to redirect_to(dashboard_path)
+      post :approve, params: {id:'fake'}
+      expect(response).to redirect_to(dashboard_path)
+      post :reject, params: {id:'fake'}
+      expect(response).to redirect_to(dashboard_path)
     end
   end
 end
