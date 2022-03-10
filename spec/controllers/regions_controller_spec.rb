@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe RegionsController, type: :controller do
   describe "a non logged in person" do 
-    it "redirects into home screen" do
+    it "redirects into sign in" do
       get :index 
       expect(response).to redirect_to(new_user_session_path)
       post :create 

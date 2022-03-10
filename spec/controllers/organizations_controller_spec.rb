@@ -47,7 +47,7 @@ RSpec.describe OrganizationsController, type: :controller do
       organization_user.organization=nil
       organization_user.save
       sign_in(organization_user)
-
+      
       get :edit, params: {id: 'fake'}
       expect(response).to redirect_to(dashboard_path)
       patch :update, params: {id: 'fake'}
