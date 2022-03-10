@@ -15,5 +15,16 @@ RSpec.describe TicketsController, type: :controller do
       expect(response).to redirect_to(dashboard_path)
     end
   end
+
+  describe "an approved Organization user" do 
+    it "redirects to dashboard"  do
+      organization_user = create(:user)
+      organization_user.confirm
+      sign_in(organization_user)
+      
+      delete :destroy, params: {id: 'Fake'}
+      expect(response).to redirect_to(dashboard_path)
+    end
+  end
 end 
 
