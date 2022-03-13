@@ -5,4 +5,13 @@ FactoryBot.define do
     role { "organization" }
     organization
   end
+  
+  trait :admin_user do
+    role {:admin}
+  end
+
+  trait :organization_user do
+    role {'organization'}
+    organization
+  end
 end
