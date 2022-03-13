@@ -13,5 +13,13 @@ FactoryBot.define do
     secondary_phone {"+15034567890"}
     title {"Fake Org Title"}
     transportation{"yes"}
+
+    trait :set_submitted do 
+      status {:submitted}
+    end
+
+    trait :set_rejected do
+      status {:rejected}
+    end
   end
 end
