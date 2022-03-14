@@ -1,13 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe 'Creating an Organization Application', type: :feature do 
-    it "new user's application" do    
+    it "new user's application" do  
         user = create(:user)
         user.confirm
         user.organization = nil
         user.save!
         log_in_as(user)
 
+        admin_user = create(:user,:admin_user)
+        admin_user.confirm
+        
+    
         visit "/organizations/new"
 
         choose("organization_liability_insurance_true")
