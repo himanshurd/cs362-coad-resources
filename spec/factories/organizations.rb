@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :organization do
-    name {"fake Name"}
-    id {"fake id"}
-    email {"Fake@Email.com"}
+    sequence(:name) { |n| "name#{n}" }
+    sequence(:email) { |n| "person#{n}@email.com" }
     status {"approved"}
     phone {"+15037998087"}
     description {"fake organization"}
@@ -20,6 +19,7 @@ FactoryBot.define do
 
     trait :set_rejected do
       status {:rejected}
+
     end
   end
 end
