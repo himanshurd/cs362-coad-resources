@@ -14,5 +14,4 @@ RSpec.describe 'Deleting a Ticket', type: :feature do
         click_on "Delete"
         expect(page).to_not have_text("Delete_ticket")
       end
-
 end
